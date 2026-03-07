@@ -1,5 +1,6 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
+import path from "path";
 import bot from "./src/bot.ts";
 import db from "./src/db.ts";
 import { session } from "telegraf";
@@ -97,6 +98,10 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     app.use(express.static("dist"));
+    // SPA fallback for production
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve("dist/index.html"));
+    });
   }
 
   app.listen(PORT, "0.0.0.0", () => {
