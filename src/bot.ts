@@ -13,7 +13,7 @@ interface MyContext extends Context {
   };
 }
 
-const bot = new Telegraf<MyContext>(process.env.TELEGRAM_BOT_TOKEN || '');
+const bot = new Telegraf<MyContext>(process.env.TELEGRAM_BOT_TOKEN || '8768988908:AAFAvtNbQGLMX1heOH2cPdRypK3maDmiPnM');
 
 // IMPORTANT: Session must be initialized BEFORE any handlers
 bot.use(session({
